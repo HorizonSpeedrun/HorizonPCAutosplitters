@@ -44,15 +44,6 @@ init
     var hash = vars.CalcModuleHash(module);
     vars.DebugOutput(module.ModuleName + ": Module Size " + moduleSize + ", SHA256 Hash " + hash);
 
-    /*
-    var moduleList = "";
-    for(int i = 0; i < modules.Length; ++i)
-    {
-        moduleList += "," + modules[i].ModuleName;
-    }
-    vars.DebugOutput(moduleList);
-    */
-
     version = "";
     if (hash == "866C131C0BBE6E60DBF4332618BBC2109E60F6620106CFF925D7A5399220AECA")
     {
