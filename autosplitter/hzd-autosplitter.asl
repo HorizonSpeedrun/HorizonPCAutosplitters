@@ -48,6 +48,7 @@ init
     if (hash == "866C131C0BBE6E60DBF4332618BBC2109E60F6620106CFF925D7A5399220AECA")
     {
         version = "v181/7517962-Steam";
+        // also denoted as Steam version 1.11.2
     }
     else if (hash == "706BA0C319FCC62F9221D310D1A4FD178214ECC0F9030A62029FF70CF15522D1")
     {
@@ -70,8 +71,6 @@ isLoading
 
 exit
 {
-}
-
-update
-{
+    timer.IsGameTimePaused = false;
+    // Game crashes do not pause the timer to keep the rules as close as possible to the console LR
 }
