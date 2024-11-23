@@ -144,9 +144,9 @@ init{
             current.isLoading || // General game loading
             // current.isFadeToBlack || // That brief moment when the screen fades in or out
             current.isBetweenWorlds || // Scene and world transitions
-            current.isWorldTransition || // World transitions
+            current.isWorldTransition; // World transitions
             // Title screen:
-            vars.Funcs.FNameToString(current.levelFName) == "StarterFrontendMap";
+            // vars.Funcs.FNameToString(current.levelFName) == "StarterFrontendMap";
     });
 
     // Determines if it is time to split:
