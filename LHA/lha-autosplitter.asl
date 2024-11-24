@@ -58,14 +58,18 @@ startup{
                 {"GB_Cau_Boss_Lighting", "The belly of the beast", "", "ch2", true},
             {"ch3", "Ch. 3 - Desperately Seeking Sawtooths", null, "m_quests", true},
                 {"GB_B3_Room_001_Lighting_Morning_Jungle", "Lair of the tree haters", "", "ch3", true},
-                {"GB_SR_B3_Tallneck_01_Exit_Lighting_Day_Jungle", "Digging up secrets", "", "ch3", true},
+                {"dus", "Digging up secrets", "", "ch3", true},
+                    {"GB_SR_B3_Tallneck_01_Exit_Lighting_Day_Jungle", "Tallneck route", "", "dus", true},
+                    {"GB_B3_TreasureRoom_001_Lighting_Day_Jungle", "Battle route", "", "dus", true},
                 {"GB_B3_Room_006_Lighting_Evening_Jungle", "Home cooking", "", "ch3", true},
                 {"GB_B3_Room_009_Lighting_Night_Jungle", "Legend of the mithyc tale", "", "ch3", true},
                 {"GB_B3_Boss_Room_BiomassFacility_Lighting", "Instructions not required", "", "ch3", true},
             {"ch4", "Ch. 4 - Drawing Out Helis", null, "m_quests", true},
                 {"GB_B4_Room_002_Lighting_Day_Desert", "The desert flower", "", "ch4", true},
                 {"GB_B4_Room_004_Lighting_Day_Desert", "Flavors of a lost world", "", "ch4", true},
-                {"GB_SR_B4_Tallneck_01_Exit_Lighting_Day_Desert", "Midday at the oasis", "", "ch4", true},
+                {"mato", "Midday at the oasis", "", "ch4", true},
+                    {"GB_SR_B4_Tallneck_01_Exit_Lighting_Day_Desert", "Tallneck route", "", "mato", true},
+                    {"GB_B4_TreasureRoom_001_Lighting_Day_Desert", "Battle route", "", "mato", true},
                 {"GB_B4_Room_007_Lighting_Night_Desert", "We can be heroes", "", "ch4", true},
                 {"GB_B4_Room_005_Lighting_Evening_Desert", "Sundown showdown", "", "ch4", true},
                 {"GB_B5_Boss_Room_001_Lighting_Destruction_Jungle_Hell", "The final battle", "", "ch4", true}
@@ -110,7 +114,7 @@ startup{
         }
     });
 
-    // Initialize autosplit settings
+    // Initialize the autosplitter settings
     dynamic tmp = null;
     for (int i = 0; i < _settings.GetLength(0); i++){
         tmp = new ExpandoObject();
@@ -187,8 +191,8 @@ init{
 } // init ends
 
 update{
-    // print(vars.Funcs.FNameToString(current.levelFName));
-    // print(vars.Funcs.FNameToString(current.sceneFName));
+    print(vars.Funcs.FNameToString(current.levelFName));
+    print(vars.Funcs.FNameToString(current.sceneFName));
 }
 
 isLoading{
