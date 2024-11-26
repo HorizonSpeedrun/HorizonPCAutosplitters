@@ -1,23 +1,45 @@
 // Created by Driver
 
-state("LegoHorizonAdventures-Win64-Shipping", "v1.2.0.0-Steam"){
+state("LegoHorizonAdventures-Win64-Shipping", "v1.3.0.0-Steam"){
     // GWorld, levelFname
-    ulong levelFName : 0x891BE78, 0x18;
+    ulong levelFName : 0x88FCE78, 0x18;
     // GWorld, Levels, Levels[1], WorldContainer, sceneFName
-    ulong sceneFName : 0x891BE78, 0x170, 0x8, 0x20, 0x18;
+    ulong sceneFName : 0x88FCE78, 0x170, 0x8, 0x20, 0x18;
 
     // GEngine, GameInstance, 0x108, 0x1D0, goldBricks
-    int goldBricks : 0x8918FE8, 0x1088, 0x108, 0x1D0, 0x2A4;
+    int goldBricks : 0x88F9FE8, 0x1088, 0x108, 0x1D0, 0x2A4;
 
     // Loading flags:
     // GEngine, GameInstance, 0x108, GlowMusicSubsystem, GlowMusicGameplayHandler, Flag
-    bool isPaused : 0x8918FE8, 0x1088, 0x108, 0x368, 0x288, 0x1EE;
-    bool isCinematic : 0x8918FE8, 0x1088, 0x108, 0x368, 0x288, 0x1EF;
-    bool isConversation : 0x8918FE8, 0x1088, 0x108, 0x368, 0x288, 0x1F1;
-    bool isLoading : 0x8918FE8, 0x1088, 0x108, 0x368, 0x288, 0x208;
-    bool isFadeToBlack : 0x8918FE8, 0x1088, 0x108, 0x368, 0x288, 0x209;
-    bool isBetweenWorlds : 0x8918FE8, 0x1088, 0x108, 0x368, 0x288, 0x20A;
-    bool isWorldTransition : 0x8918FE8, 0x1088, 0x108, 0x368, 0x288, 0x20B;
+    bool isPaused : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x1EE;
+    bool isCinematic : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x1EF;
+    bool isConversation : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x1F1;
+    bool isLoading : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x208;
+    bool isFadeToBlack : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x209;
+    bool isBetweenWorlds : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x20A;
+    bool isWorldTransition : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x20B;
+}
+
+// EpicGames version's memory addresses are the same as the Steam version, as for patch
+// 1.2, but an independant state is included here in case this changes in the future:
+state("LegoHorizonAdventures-Win64-Shipping", "v1.3.0.0-EpicGames"){
+    // GWorld, levelFname
+    ulong levelFName : 0x88FCE78, 0x18;
+    // GWorld, Levels, Levels[1], WorldContainer, sceneFName
+    ulong sceneFName : 0x88FCE78, 0x170, 0x8, 0x20, 0x18;
+
+    // GEngine, GameInstance, 0x108, 0x1D0, goldBricks
+    int goldBricks : 0x88F9FE8, 0x1088, 0x108, 0x1D0, 0x2A4;
+
+    // Loading flags:
+    // GEngine, GameInstance, 0x108, GlowMusicSubsystem, GlowMusicGameplayHandler, Flag
+    bool isPaused : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x1EE;
+    bool isCinematic : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x1EF;
+    bool isConversation : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x1F1;
+    bool isLoading : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x208;
+    bool isFadeToBlack : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x209;
+    bool isBetweenWorlds : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x20A;
+    bool isWorldTransition : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x20B;
 }
 
 // Script is executed
@@ -90,24 +112,26 @@ startup{
         return hexHashString;
     });
 
-    // Default variables (Patch 1.2.0.0 Steam version):
-    version = "v1.2.0.0-Steam";
-    vars.FNamePoolOffset = 0x86F9500;
+    // Default variables (Patch 1.3.0.0 Steam version):
+    version = "v1.3.0.0-Steam";
+    vars.FNamePoolOffset = 0x86DA500;
     // Determines the running game version and initialize variables acordingly:
+    // Patch 1.3.0.0 EpicGames:
     vars.Funcs.setGameVersion = (Action<string>)((hash) => {
-        // TODO: add EpicGames version:
-        if(hash == "<EPIC_GAMES_HASH_STRING>"){
-            // Update variables
-        // Patch 1.2.0.0 Steam:
-        }else if(hash == "5CD97AF9CCAE47FB6A4534DEC00BBD6FE8F9FB1AD752BB6571F364C1E65CAEDC"){
+        if(hash == "5CD08D26A3D97375D10BB72B4A89582A9E645878FAA217CA5CF3B7DF55EF1E70"){
+            version = "v1.3.0.0-EpicGames";
+            vars.FNamePoolOffset = 0x86F9500;
+            print("Detected game version: " + version);
+        // Patch 1.3.0.0 Steam:
+        }else if(hash == "4235C8EA076AE5E7CCCA5DE19C2C0D3E715241F6AEEB309071981D230A5A0469"){
             // Don't do anything, the default variables are the Steam ones...
-            print("Detected game version: 1.2.0.0-Steam");
+            print("Detected game version: " + version);
         }
         else{
             // If no version was identified, show a warning message:
             MessageBox.Show(
                 "The Autosplitter could not identify the game version, the default version was set to " + version + ".\nIf this is not the version of your game, the Autosplitter might not work properly.",
-                "HFW Autosplitter",
+                "LHA Autosplitter",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Warning
             );
@@ -191,8 +215,8 @@ init{
 } // init ends
 
 update{
-    print(vars.Funcs.FNameToString(current.levelFName));
-    print(vars.Funcs.FNameToString(current.sceneFName));
+    // print(vars.Funcs.FNameToString(current.levelFName));
+    // print(vars.Funcs.FNameToString(current.sceneFName));
 }
 
 isLoading{
