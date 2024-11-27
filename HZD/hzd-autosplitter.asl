@@ -13,6 +13,8 @@ state("HorizonZeroDawn", "v181/7517962-Steam")
     double totalTimePlayed: 0x0714F830, 0x160; // time shown in statistics; for ridge delayed split
     uint loading : 0x0714F830, 0x4B4;
     byte windowActiveInd : 0x07152640; // 2 -> tabbed in, 9 -> tabbed out
+
+    ulong worldPtr : 0x0714F830;
 }
 state("HorizonZeroDawn", "v181/7517962-GoG")
 {
@@ -24,6 +26,8 @@ state("HorizonZeroDawn", "v181/7517962-GoG")
     double totalTimePlayed: 0x0714C728, 0x160;
     uint loading : 0x0714C728, 0x4B4;
     byte windowActiveInd : 0x0714F538;
+
+    ulong worldPtr : 0x0714C728;
 }
 /*
 Placeholder for Epic Games version
@@ -182,6 +186,8 @@ startup
         if(description != "") { settings.SetToolTip(key, description); }
 	};
 
+    AddSplitSettingF("res_main_menu", "Reset on Main Menu", "Reset run when quitting to main menu", null);
+    
     settings.Add("ngp_overall",true, "NG+ Run");
     AddSplitSetting("01_ngp_start", "NG+ Start", "Note:\nDue to the information available, we cannot differentiate between resuming the cutscene and actually skipping it without starting the timer too late.\nOnce you are given the prompt to skip the cutscene, both Back and Skip will start the timer.\nPause via the Pause button or tabbing should be covered.", "ngp_overall");
     AddSplitSettingF("02_sawtooth_cs", "Sawtooth Looting", "On looting the Sawtooth", "ngp_overall");
@@ -569,6 +575,15 @@ update
             vars.DbgSizeSplits = vars.completedSplits.Count;
         }
     }
+}
+
+reset
+{
+    if(settings["res_main_menu"] && (old.worldPtr > 0 && current.worldPtr == 0))
+    {
+        return true;
+    }
+    return false;
 }
 
 start
