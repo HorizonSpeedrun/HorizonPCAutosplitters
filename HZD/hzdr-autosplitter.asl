@@ -127,9 +127,9 @@ startup
         {
             return false;
         }
-        double posV = trafoData[3] * pos[0] + trafoData[4] + pos[1] + trafoData[5];
+        double posV = trafoData[3] * pos[0] + trafoData[4] * pos[1] + trafoData[5];
         if (posV < 0 || posV > 1) { return false; }
-        double posU = trafoData[0] * pos[0] + trafoData[1] + pos[1] + trafoData[2];
+        double posU = trafoData[0] * pos[0] + trafoData[1] * pos[1] + trafoData[2];
         return (posU >= 0 && posU <= 1);
     }; // Bounding Box check allowing for rotation in XY, trafoData is expected to be 6 element vector for normalized transformation in XY
     vars.BoundsCheckXYRBB = BoundsCheckXYRBB;
@@ -456,10 +456,7 @@ update
     if(!vars.completedFacts.Contains("fact_tfw_area"))
     {
         if(vars.BoundsCheckCyl(vars.positionVec, new double[]{2951.37, 1048.84}, 3.0, new double[]{287, 289})) // TODO: check alternative TFW 
-        {
-            vars.DebugOutputPos("TFW NG+: In Cyl-Bounds", vars.positionVec);
-            return true;
-        }
+        { vars.completedFacts.Add("fact_tfw_area"); }
     }
     else // fact_tfw_area
     {
@@ -467,7 +464,7 @@ update
     {
         if(current.invulnerable > 0) // Tallneck reactivation CS
         {
-            if(vars.BoundsCheckCyl(vars.positionVec, new double[]{2588.1, 1700.5}, 3.0, new double[]{199, 205}))
+            if(vars.BoundsCheckCyl(vars.positionVec, new double[]{2588.1, 1700.5}, 3.0, new double[]{455, 465}))
             { vars.completedFacts.Add("fact_tfw_tn"); }
         }
     }
