@@ -45,7 +45,8 @@ The other player base address should be derivable by subtracting 0x0E38 from tha
 
 startup
 {
-    vars.WriteDebug = false;
+    vars.WriteDebug = true;
+    vars.WriteVerboseDebug = false;
     Action<string> DebugOutput = (text) => {
         if (vars.WriteDebug)
         {
@@ -54,7 +55,7 @@ startup
     };
     vars.DebugOutput = DebugOutput;
     Action<string, double[]> DebugOutputPos = (text, posVec) => {
-        if (vars.WriteDebug)
+        if (vars.WriteDebug && vars.WriteVerboseDebug)
         {
             print("[HZDR Autosplitter Debug] " + text + " | Position:" + posVec[0].ToString() + "," + posVec[1].ToString() + "," + posVec[2].ToString());
         }
