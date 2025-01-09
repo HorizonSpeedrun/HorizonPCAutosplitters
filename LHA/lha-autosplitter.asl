@@ -1,49 +1,51 @@
 // Created by Driver
+// Updates:
+// Gworld (state{} action), Gengine (state{} action), FNamePool (vars.Funcs.setGameVersion()) and executable hashes (vars.Funcs.setGameVersion())
 
 state("LegoHorizonAdventures-Win64-Shipping", "v1.3.0.0-Steam"){
     // GWorld, levelFname
-    ulong levelFName : 0x88FCE78, 0x18;
+    ulong levelFName : 0x890A1B8, 0x18;
     // GWorld, Levels, Levels[1], WorldContainer, sceneFName
-    ulong sceneFName : 0x88FCE78, 0x170, 0x8, 0x20, 0x18;
+    ulong sceneFName : 0x890A1B8, 0x170, 0x8, 0x20, 0x18;
 
     // GEngine, GameInstance, 0x108, 0x1D0, goldBricks
-    int goldBricks : 0x88F9FE8, 0x1088, 0x108, 0x1D0, 0x2A4;
+    int goldBricks : 0x8907328, 0x1088, 0x108, 0x1D0, 0x2A4;
     // Gold bricks for the coop player:
-    int goldBricksRemote : 0x88F9FE8, 0xA58, 0xE8, 0xD00, 0x2B8, 0x18;
+    int goldBricksRemote : 0x8907328, 0xA58, 0xE8, 0xD00, 0x2B8, 0x8;
 
     // Loading flags:
     // GEngine, GameInstance, 0x108, GlowMusicSubsystem, GlowMusicGameplayHandler, Flag
-    bool isPaused : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x1EE;
-    bool isCinematic : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x1EF;
-    bool isConversation : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x1F1;
-    bool isLoading : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x208;
-    bool isFadeToBlack : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x209;
-    bool isBetweenWorlds : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x20A;
-    bool isWorldTransition : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x20B;
+    bool isPaused : 0x8907328, 0x1088, 0x108, 0x368, 0x288, 0x1EE;
+    bool isCinematic : 0x8907328, 0x1088, 0x108, 0x368, 0x288, 0x1EF;
+    bool isConversation : 0x8907328, 0x1088, 0x108, 0x368, 0x288, 0x1F1;
+    bool isLoading : 0x8907328, 0x1088, 0x108, 0x368, 0x288, 0x208;
+    bool isFadeToBlack : 0x8907328, 0x1088, 0x108, 0x368, 0x288, 0x209;
+    bool isBetweenWorlds : 0x8907328, 0x1088, 0x108, 0x368, 0x288, 0x20A;
+    bool isWorldTransition : 0x8907328, 0x1088, 0x108, 0x368, 0x288, 0x20B;
 }
 
 // EpicGames version's memory addresses are the same as the Steam version, as for patch
 // 1.3, but an independant state is included here in case this changes in the future:
 state("LegoHorizonAdventures-Win64-Shipping", "v1.3.0.0-EpicGames"){
     // GWorld, levelFname
-    ulong levelFName : 0x88FCE78, 0x18;
+    ulong levelFName : 0x890A1B8, 0x18;
     // GWorld, Levels, Levels[1], WorldContainer, sceneFName
-    ulong sceneFName : 0x88FCE78, 0x170, 0x8, 0x20, 0x18;
+    ulong sceneFName : 0x890A1B8, 0x170, 0x8, 0x20, 0x18;
 
     // GEngine, GameInstance, 0x108, 0x1D0, goldBricks
-    int goldBricks : 0x88F9FE8, 0x1088, 0x108, 0x1D0, 0x2A4;
+    int goldBricks : 0x8907328, 0x1088, 0x108, 0x1D0, 0x2A4;
     // Gold bricks for the coop player:
-    int goldBricksRemote : 0x88F9FE8, 0xA58, 0xE8, 0xD00, 0x2B8, 0x18;
+    int goldBricksRemote : 0x8907328, 0xA58, 0xE8, 0xD00, 0x2B8, 0x8;
 
     // Loading flags:
     // GEngine, GameInstance, 0x108, GlowMusicSubsystem, GlowMusicGameplayHandler, Flag
-    bool isPaused : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x1EE;
-    bool isCinematic : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x1EF;
-    bool isConversation : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x1F1;
-    bool isLoading : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x208;
-    bool isFadeToBlack : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x209;
-    bool isBetweenWorlds : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x20A;
-    bool isWorldTransition : 0x88F9FE8, 0x1088, 0x108, 0x368, 0x288, 0x20B;
+    bool isPaused : 0x8907328, 0x1088, 0x108, 0x368, 0x288, 0x1EE;
+    bool isCinematic : 0x8907328, 0x1088, 0x108, 0x368, 0x288, 0x1EF;
+    bool isConversation : 0x8907328, 0x1088, 0x108, 0x368, 0x288, 0x1F1;
+    bool isLoading : 0x8907328, 0x1088, 0x108, 0x368, 0x288, 0x208;
+    bool isFadeToBlack : 0x8907328, 0x1088, 0x108, 0x368, 0x288, 0x209;
+    bool isBetweenWorlds : 0x8907328, 0x1088, 0x108, 0x368, 0x288, 0x20A;
+    bool isWorldTransition : 0x8907328, 0x1088, 0x108, 0x368, 0x288, 0x20B;
 }
 
 // Script is executed
@@ -125,16 +127,16 @@ startup{
 
     // Default variables (Patch 1.3.0.0 Steam version):
     version = "v1.3.0.0-Steam";
-    vars.FNamePoolOffset = 0x86DA500;
+    vars.FNamePoolOffset = 0x086E7840;
     // Determines the running game version and initialize variables acordingly:
     // Patch 1.3.0.0 EpicGames:
     vars.Funcs.setGameVersion = (Action<string>)((hash) => {
-        if(hash == "5CD08D26A3D97375D10BB72B4A89582A9E645878FAA217CA5CF3B7DF55EF1E70"){
+        if(hash == "9F14EEFC50B47239845C35B3E90BA81629750062840C9BDBE0CBBB2A29CB6B88"){
             version = "v1.3.0.0-EpicGames";
-            vars.FNamePoolOffset = 0x86DA500;
+            vars.FNamePoolOffset = 0x086E7840;
             print("Detected game version: " + version);
         // Patch 1.3.0.0 Steam:
-        }else if(hash == "4235C8EA076AE5E7CCCA5DE19C2C0D3E715241F6AEEB309071981D230A5A0469"){
+        }else if(hash == "EEBFB44BDE489A60B047050788A7AE9D4D9574F15B8DF60292379DCD3719E4C4"){
             // Don't do anything, the default variables are the Steam ones...
             print("Detected game version: " + version);
         }
@@ -168,7 +170,7 @@ startup{
 init{
     // Gets the running game module hash:
     var moduleHash = vars.Funcs.hashModule(modules.First());
-    // print(moduleHash);
+    print(moduleHash);
 
     // Initialize variables acording to the running version:
     vars.Funcs.setGameVersion(moduleHash);
@@ -226,9 +228,9 @@ init{
 } // init ends
 
 update{
-    //print(vars.Funcs.FNameToString(current.levelFName));
-    //print(vars.Funcs.FNameToString(current.sceneFName));
-    //print(current.goldBricksRemote.ToString());
+    // print(vars.Funcs.FNameToString(current.levelFName));
+    // print(vars.Funcs.FNameToString(current.sceneFName));
+    // print(current.goldBricksRemote.ToString());
 }
 
 isLoading{
@@ -254,6 +256,7 @@ split{
         // Gold brick splits:
         if(current.goldBricks > old.goldBricks || current.goldBricksRemote != old.goldBricksRemote){
             print("\n\nGold brick collected.");
+            print("Local gold bricks: " + current.goldBricks.ToString() + " | " + "Remote gold bricks: " + current.goldBricksRemote.ToString());
             if(vars.Funcs.isSplit("GB_" + currentSceneName)){
                 return true;
             }
