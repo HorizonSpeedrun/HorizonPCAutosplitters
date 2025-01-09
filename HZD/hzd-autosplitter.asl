@@ -347,7 +347,7 @@ update
     }
     if(!vars.completedFacts.Contains("fact_corrupter"))
     {
-        if(current.loading > 0) // Prerendered loading cutscene
+        if(current.invulnerable > 0) // Corrupter gutting cutscene
         {
             if(vars.BoundsCheckCircLat(vars.positionVec, new double[]{2385.8, -1896.5}, 5.0))
             { vars.completedFacts.Add("fact_corrupter"); }
