@@ -233,8 +233,8 @@ startup
     AddSplitSetting("tfw01_songs_edge", "Song's Edge", "FT to Song's Edge or passing by the CF", "ngp_tfw");
     AddSplitSetting("tfw02_tallneck", "TFW Tallneck", "Any loads after the TN cutscene, designed to be the RFS after the Tallneck", "ngp_tfw");
     AddSplitSetting("tfw03_naltuk", "Naltuk", "End of Yapping to Naltuk the first time (i.e. kill the machines and tower first)", "ngp_tfw");
-    AddSplitSetting("tfw04a_shamans_path", "Shaman's Path Facility Entrance", "Opening the first facility door.", "ngp_tfw");
-    AddSplitSetting("tfw04b_ourea", "Shaman's Path / Ourea", "Opening the facility door after talking to Ourea.", "ngp_tfw");
+    AddSplitSettingF("tfw04a_ourea_entering", "Shaman's Path / Entering Ourea's room", "Opening the door to Ourea. The Ourea cutscene plays after the split.", "ngp_tfw");
+    AddSplitSetting("tfw04b_ourea_leaving", "Shaman's Path / Leaving Ourea's room", "Opening the facility door after talking to Ourea.", "ngp_tfw");
     AddSplitSetting("tfw05_tfw_hg", "TFW Hunting Ground", "FT away from the HG", "ngp_tfw");
     AddSplitSetting("tfw06_werak_challenge", "Werak Challenge", "FT after fighting the bears", "ngp_tfw");
     AddSplitSetting("tfw07_longnotch", "Longnotch", "Skipping the cutscene entering the facility", "ngp_tfw");
@@ -511,20 +511,12 @@ update
             { vars.completedFacts.Add("fact_tfw_tn"); }
         }
     }
-    if(!vars.completedFacts.Contains("fact_tfw_shamans_path"))
+    if(!vars.completedFacts.Contains("fact_tfw_ourea_yap"))
     {
-        if(current.invulnerable > 0) // Alternative End of Shaman's Path
-        {
-            if(vars.BoundsCheckCircLat(vars.positionVec, new double[]{2241.29, 2699.6}, 3.0))
-            { vars.completedFacts.Add("fact_tfw_shamans_path"); }
-        }
-    }
-    if(!vars.completedFacts.Contains("fact_tfw_ourea"))
-    {
-        if(current.invulnerable > 0) // End of Shaman's Path
+        if(current.invulnerable > 0) // Talking to Ourea
         {
             if(vars.BoundsCheckCircLat(vars.positionVec, new double[]{2196.6, 2806.7}, 2.0)) // Z 751.8
-            { vars.completedFacts.Add("fact_tfw_ourea"); }
+            { vars.completedFacts.Add("fact_tfw_ourea_yap"); }
         }
     }
     if(!vars.completedFacts.Contains("fact_tfw_hg"))
@@ -984,20 +976,20 @@ split
 
         }
     }
-    if(settings["tfw04a_shamans_path"] && !vars.completedSplits.Contains("tfw04a_shamans_path"))
+    if(settings["tfw04a_ourea_entering"] && !vars.completedSplits.Contains("tfw04a_ourea_entering"))
     {
-        if(current.invulnerable == 1 && vars.completedFacts.Contains("fact_tfw_shamans_path"))
+        if(current.invulnerable == 1) // no fact related to this, on opening the door to the Ourea cutscene
         {
-            if(vars.BoundsCheckCircLat(vars.positionVec, new double[]{2196.6, 2806.7}, 4.0))
-            { vars.completedSplits.Add("tfw04a_shamans_path"); return true; }
+            if(vars.BoundsCheckCircLat(vars.positionVec, new double[]{2201.8, 2770.2}, 3.0))
+            { vars.completedSplits.Add("tfw04a_ourea_entering"); return true; }
         }
     }
-    if(settings["tfw04b_ourea"] && !vars.completedSplits.Contains("tfw04b_ourea"))
+    if(settings["tfw04b_ourea_leaving"] && !vars.completedSplits.Contains("tfw04b_ourea_leaving"))
     {
-        if(current.invulnerable == 1 && vars.completedFacts.Contains("fact_tfw_ourea"))
+        if(current.invulnerable == 1 && vars.completedFacts.Contains("fact_tfw_ourea_yap"))
         {
             if(vars.BoundsCheckCircLat(vars.positionVec, new double[]{2211.9, 2806.4}, 4.0))
-            { vars.completedSplits.Add("tfw04b_ourea"); return true; }
+            { vars.completedSplits.Add("tfw04b_ourea_leaving"); return true; }
         }
     }
     if(settings["tfw05_tfw_hg"] && !vars.completedSplits.Contains("tfw05_tfw_hg"))
